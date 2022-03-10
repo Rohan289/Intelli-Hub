@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Ticket } from './components/common/Ticket';
 import {css} from 'styled-components'
 import { Link } from 'react-router-dom';
 import { CreateTicket } from './components/CreateTicket';
+import { getTicketDDetails, isApiSuccess } from './service';
 const sharedStyle = css`
 font-weight:bold;
 margin:2%;
@@ -57,7 +58,16 @@ display:grid;
 grid-template-columns: 50% 25% 25%;
 grid-gap:1em;
 `
-export const About = () => (
+export const Dashboard = () =>  {
+  const [ticketDetails,setTicketDetails] = React.useState([])
+  useEffect(() => {
+    getTicketDDetails().then(res => {
+      if(isApiSuccess(res)) {
+        setTicketDetails(res.data);
+      }
+    })
+  },[])
+  return (
   <GridWrapper>
         <TicketContent>
       <div>
@@ -89,10 +99,9 @@ export const About = () => (
       </FilterButton>
     </FilterButtonDiv>
 
-    {
-      [1,2,3].map((val) => {
+    { ticketDetails && ticketDetails.map((ticketDetail,index) => {
         return(
-          <Ticket />
+          <Ticket ticketDetail={ticketDetail} />
         )
       })
     }
@@ -104,3 +113,4 @@ export const About = () => (
     </TicketContent>
   </GridWrapper>
 )
+  }

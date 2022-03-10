@@ -90,16 +90,12 @@ margin-left:0.5em;
 size:0.5em;
 `
 
-export const Ticket = () => {
-
+export const Ticket = (props) => {
+    const {ticketDetail} = props;
     const getCardContent = () => {
         return(
         <StyledCardContent>
-        <ProfileTicketDescription>
-        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-        </ProfileTicketDescription>
+        <ProfileTicketDescription> {ticketDetail?ticketDetail.description : ''}</ProfileTicketDescription>
         </StyledCardContent>
         )
     }
@@ -111,10 +107,10 @@ export const Ticket = () => {
                 <div><ProfileImage src={require('../../assets/profile.jpg')} /></div>
                 <ProfileHeaderName>
                     <div>
-                <ProfileTicketName>Need to change my shipping address
+                <ProfileTicketName>{ticketDetail?ticketDetail.name : ''}
                     {
                         TicketTypeBadges.map((badge,index) => {
-                            if(badge.name === "Bug") {
+                            if(ticketDetail && badge.name === ticketDetail.type) {
                                 return(
                                     <span class={badge.css}>{badge.value}</span>
                                 )
@@ -123,7 +119,7 @@ export const Ticket = () => {
                     }
                   </ProfileTicketName>
                 </div><div>
-                    <ProfileTicketDescriptionDiv><ProfileTicketIssuer>Rohan Bhowmick</ProfileTicketIssuer>
+                    <ProfileTicketDescriptionDiv><ProfileTicketIssuer>{ticketDetail?ticketDetail.assignee : ''}</ProfileTicketIssuer>
                     <ProfileTicketDescription>reported in Issue</ProfileTicketDescription>
                     </ProfileTicketDescriptionDiv></div>
                 </ProfileHeaderName>
