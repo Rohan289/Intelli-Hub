@@ -6,7 +6,7 @@ export const getTicketDDetails = () => {
 }
 
 export const isApiSuccess = (call) => {
-    if(call && call.status && call.status === 200) {
+    if(call && call.status && call.status  === 200) {
         return true;
     }
     return false;
