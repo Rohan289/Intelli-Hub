@@ -7,6 +7,8 @@ import { FilterTickets } from './FilterTickets';
 import { getTicketDDetails, isApiSuccess } from '../service';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { TicketButtonData } from '../data/SideBarData';
+
 const sharedStyle = css`
 font-weight:bold;
 margin:2%;
@@ -93,24 +95,15 @@ export const Dashboard = () =>  {
     <FilterButton style={{marginRight:"1em"}}>
         <FIlterLink className='fa-solid fa-bookmark' />
       </FilterButton>
-      <FilterButton>
-        <FIlterLink className='fa-solid fa-reply' /><FilterButtonText>Reply</FilterButtonText>
-      </FilterButton>
-      <FilterButton>
-        <FIlterLink className='fa-solid fa-sticky-note' /><FilterButtonText>Add Note</FilterButtonText>
-      </FilterButton>
-      <FilterButton>
-        <FIlterLink className='fa-solid fa-mail-forward' /><FilterButtonText>Forward</FilterButtonText>
-      </FilterButton>
-      <FilterButton>
-        <FIlterLink className='fa-solid fa-times-circle' /><FilterButtonText>Close</FilterButtonText>
-      </FilterButton>
-      <FilterButton>
-        <FIlterLink className='fa-solid fa-code-merge' /><FilterButtonText>Merge</FilterButtonText>
-      </FilterButton>
-      <FilterButton>
-        <FIlterLink className='fa-solid fa-trash' /><FilterButtonText>Delete</FilterButtonText>
-      </FilterButton>
+      {
+        TicketButtonData.map((data,index) => {
+          return(
+            <FilterButton>
+            <FIlterLink className={data.className} /><FilterButtonText>{data.value}</FilterButtonText>
+          </FilterButton>
+          )
+        })
+      }
       <FilterButton style={{marginLeft:"1em"}}>
         <FIlterLink className='fa-solid fa-ellipsis-v' />
       </FilterButton>

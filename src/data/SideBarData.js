@@ -37,3 +37,24 @@ export const SideBarData = [
       },
   ]
 
+export const TicketButtonData = [{
+  className : "fa-solid fa-reply",
+  value : "Reply"
+},
+{
+  className : "fa-solid fa-sticky-note",
+  value : "Add Note"
+},{
+  className : "fa-solid fa-mail-forward",
+  value : "Forward"
+},{
+  className : "fa-solid fa-times-circle",
+  value : "Close"
+},{
+  className : "fa-solid fa-code-merge",
+  value : "Merge"
+},{
+  className : "fa-solid fa-trash",
+  value : "Delete"
+}
+]
