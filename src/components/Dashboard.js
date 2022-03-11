@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { Ticket } from './common/Ticket';
 import {css} from 'styled-components'
 import { Link } from 'react-router-dom';
-import { CreateTicket } from './CreateTicket';
+import { FilterTickets } from './FilterTickets';
 import { getTicketDDetails, isApiSuccess } from '../service';
-
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 const sharedStyle = css`
 font-weight:bold;
 margin:2%;
@@ -34,6 +35,10 @@ margin-bottom:0;
 const FilterButtonDiv=styled.div`
 display:flex;
 margin-left:2%;
+width : 100%;
+@media (max-width: 1006px) {
+  overflow:scroll;
+}
 `
 const FilterButton = styled.button`
 border:1px solid #D4E1E2;
@@ -59,6 +64,10 @@ display:grid;
 grid-template-columns: 50% 25% 25%;
 grid-gap:1em;
 `
+const StyledSkeleton = styled(Skeleton)`
+border-radius : 50%;
+margin-left:2%;
+`
 export const Dashboard = () =>  {
   const [ticketDetails,setTicketDetails] = React.useState([])
   useEffect(() => {
@@ -68,6 +77,13 @@ export const Dashboard = () =>  {
       }
     })
   },[])
+
+  const loadPage = () => {
+    return(
+      <StyledSkeleton count={5} />
+    )
+  }
+
   return (
   <GridWrapper>
         <TicketContent>
@@ -104,10 +120,10 @@ export const Dashboard = () =>  {
         return(
           <Ticket ticketDetail={ticketDetail} />
         )
-      }) : null}
+      }) : loadPage()}
     </div>
     <div>
-      <CreateTicket />
+      <FilterTickets />
     </div>
     <div></div>
     </TicketContent>

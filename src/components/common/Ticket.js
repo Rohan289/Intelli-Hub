@@ -92,6 +92,7 @@ size:0.5em;
 
 export const Ticket = (props) => {
     const {ticketDetail} = props;
+    
     const getCardContent = () => {
         return(
         <StyledCardContent>

@@ -10,7 +10,7 @@ const Styles = styled.div`
   }
   .navbar-brand {
     font-size: 2.5em;
-    width:75px;
+    width: 75px;
     text-align:center;
     color: #9FFFCB;
     &:hover { color: white; }

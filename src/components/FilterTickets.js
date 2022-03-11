@@ -49,7 +49,7 @@ border:1px solid #A9E7A0;
 `
 
 
-export const CreateTicket = () => {
+export const FilterTickets = () => {
     const [ticket,setTicketType] = React.useState('');
     const [ticketStatus,setTicketStatus] = React.useState('');
     const [ticketPriority,setTicketPriority] = React.useState('');
