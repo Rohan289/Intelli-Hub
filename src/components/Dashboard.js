@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Ticket } from './components/common/Ticket';
+import { Ticket } from './common/Ticket';
 import {css} from 'styled-components'
 import { Link } from 'react-router-dom';
-import { CreateTicket } from './components/CreateTicket';
-import { getTicketDDetails, isApiSuccess } from './service';
+import { CreateTicket } from './CreateTicket';
+import { getTicketDDetails, isApiSuccess } from '../service';
 
 const sharedStyle = css`
 font-weight:bold;
