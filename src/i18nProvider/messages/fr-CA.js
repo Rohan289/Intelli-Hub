@@ -16,6 +16,8 @@ export default {
     'Forward' : 'Effronté',
     'Close' : 'Fermer',
     'Merge' : 'Fusionner',
-    'Delete' : 'Supprimer'
+    'Delete' : 'Supprimer',
+    'Contact Details' : 'Détails du contact',
+    'Time Logs' : 'Journaux de temps'
   },
 };

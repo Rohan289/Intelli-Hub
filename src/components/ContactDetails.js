@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TIME_LOGS } from "../data/TicketFormDetails";
 import { getUserDetails, isApiSuccess } from "../service";
 import { ProfileButtonText } from "./NavigationBar";
-
+import translate from "../i18nProvider/translate";
 
 const StyledForm = styled.form`
 width : 100%;
@@ -69,8 +69,6 @@ height: 80px;
 
 
 export const ContactDetails = () => {
-    const [userName,setUserName] = React.useState('');
-    const [timeLogs,setTimeLogs] = React.useState('');
     const [user,setUser] = React.useState(null);
     const [dataFetched,setDataFetch] = React.useState(false);
     useEffect(() => {
@@ -81,24 +79,22 @@ export const ContactDetails = () => {
             }
         })
     },[])
-    const updateTimeLogs = (e) => {
-        setTimeLogs(e.target.value);
-    }
+ 
     const handleSubmit = (e) => {
         e.preventDefault();
     }
     return(
         <StyledForm onSubmit={handleSubmit}>
-        <label>Contact Details <EditText>Edit</EditText></label>
+        <label>{translate("Contact Details")} <EditText>Edit</EditText></label>
         <div className="profile-container"><ProfileImage src={require('../assets/profile.jpg')} />
         <label>{user?user.name : ''}</label>
         </div>
-        <label>Email ID</label>
+        <label>{translate("Email ID")}</label>
         <input type="email" name="name" value={user?user.emil : ''}/>
-        <label>Work Phone</label>
+        <label>{translate("Work Phone")}</label>
         <input type="text" name="name" value={user?user.mobile : ''}/>
-        <label>Time Logs:</label>
-          <select value={user?user.logHours:''} onChange={updateTimeLogs}>
+        <label>{translate("Time Logs")}:</label>
+          <select disabled value={user?user.logHours:''}>
           <option value="" disabled selected hidden>Choose time log</option>
               {
                   TIME_LOGS.map((timeLog,index) => {
@@ -108,8 +104,8 @@ export const ContactDetails = () => {
                   })
               }
           </select>
-          <button>
-          <ProfileButtonText>Update</ProfileButtonText>
+          <button disabled>
+          <ProfileButtonText>{translate("Update")}</ProfileButtonText>
         </button>
         </StyledForm>
     )

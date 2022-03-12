@@ -1,6 +1,6 @@
 import { LOCALES } from "../i18nProvider";
 import translate  from "../i18nProvider/translate";
-export const SideBarData = [
+export const SIDE_BAR_DATA = [
     {
       path: '/', /* path is used as id to check which NavItem is active basically */
       name: 'Home',
@@ -39,7 +39,7 @@ export const SideBarData = [
       },
   ]
 
-export const TicketButtonData = [{
+export const TICKET_BUTTON_DATA = [{
   className : "fa-solid fa-reply",
   value : translate("Reply")
 },
@@ -61,7 +61,7 @@ export const TicketButtonData = [{
 }
 ]
 
-export const LOCALEDATA = [{
+export const LOCALE_DATA = [{
   key : "English",
   value : LOCALES.ENGLISH
 },{

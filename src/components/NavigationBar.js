@@ -3,7 +3,7 @@ import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import { css } from 'styled-components';
-import { LOCALEDATA } from '../data/SideBarData';
+import { LOCALE_DATA } from '../data/SideBarData';
 import { LOCALES } from '../i18nProvider';
 
 const common = css`
@@ -52,14 +52,6 @@ const Styles = styled.div`
     outline: none;
     border-radius: 50%;
     margin:0.2em 0em 0em 1em;
-  }
-  
-  .icon-button:hover {
-    cursor: pointer;
-  }
-  
-  .icon-button:active {
-    background: #cccccc;
   }
   
   .icon-button__badge {
@@ -128,6 +120,7 @@ font-size: 2em;
 export const NavigationBar = (props) => {
   const {updateLocale} = props;
   const [defaultLanguage,setDefaultLanguage] = React.useState(LOCALES.ENGLISH);
+
   const updateDefaultLanguage= (e) => {
    setDefaultLanguage(e.target.value);
    updateLocale(e.target.value);
@@ -147,7 +140,7 @@ return(
         <select value={defaultLanguage} onChange={updateDefaultLanguage} className={"profile-button"}>
           <ProfileButtonIcon className='fa fw fa-caret-down' />
           {
-                  LOCALEDATA.map((lang,index) => {
+                  LOCALE_DATA.map((lang,index) => {
                       return(
                       <option value={lang.value}>{lang.key}</option>
                       )

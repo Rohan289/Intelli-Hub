@@ -7,7 +7,7 @@ import { FilterTickets } from './FilterTickets';
 import { getTicketDDetails, isApiSuccess } from '../service';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { TicketButtonData } from '../data/SideBarData';
+import { TICKET_BUTTON_DATA } from '../data/SideBarData';
 import { ContactDetails } from './ContactDetails';
 import translate from '../i18nProvider/translate';
 const sharedStyle = css`
@@ -118,7 +118,7 @@ export const Dashboard = () =>  {
         <FIlterLink className='fa-solid fa-bookmark' />
       </FilterButton>
       {
-        TicketButtonData.map((data,index) => {
+        TICKET_BUTTON_DATA.map((data,index) => {
           return(
             <FilterButton>
             <FIlterLink className={data.className} /><FilterButtonText>{data.value}</FilterButtonText>

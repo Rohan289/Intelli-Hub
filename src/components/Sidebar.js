@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
-import { SideBarData } from '../data/SideBarData';
+import { SIDE_BAR_DATA } from '../data/SideBarData';
 
 const StyledSideNav = styled.div`   
     position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
@@ -43,7 +43,7 @@ const NavItem = (props) => {
 const SideNav = (props) => {
     
     const [activePath,setActivePath] = React.useState(props.location.pathname);
-    const [items,setItems] = React.useState(SideBarData);
+    const [items,setItems] = React.useState(SIDE_BAR_DATA);
 
     const onItemClick = (path) => {
         setActivePath(path);
