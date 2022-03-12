@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-d
 import { css } from 'styled-components';
 import { LOCALE_DATA } from '../data/SideBarData';
 import { LOCALES } from '../i18nProvider';
+import { getSearchedByTicketDetails, isApiSuccess } from '../service';
 
 const common = css`
 display:flex;
@@ -118,12 +119,22 @@ margin: 0.2em 0em 0em 1em;
 font-size: 2em;
 `
 export const NavigationBar = (props) => {
-  const {updateLocale} = props;
+  const {updateLocale,searchedTicket} = props;
   const [defaultLanguage,setDefaultLanguage] = React.useState(LOCALES.ENGLISH);
+  const [tickets,searchTickets] = React.useState('');
 
   const updateDefaultLanguage= (e) => {
    setDefaultLanguage(e.target.value);
    updateLocale(e.target.value);
+}
+
+const searchTicket = (e) => {
+  searchTickets(e.target.value);
+  getSearchedByTicketDetails(e.target.value).then(res => {
+    if(isApiSuccess(res)) {
+      searchedTicket(res.data);
+    }
+  })
 }
 return(
   <Styles>
@@ -133,7 +144,7 @@ return(
         </StyledNavBar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Form className="form-center">
-        <FormControl type="text" placeholder="Search" className="" />
+        <FormControl onChange={searchTicket} type="text" placeholder="Search" className="" />
       </Form>
       <Navbar.Collapse id="basic-navbar-nav">
         <StyledRightHeader>

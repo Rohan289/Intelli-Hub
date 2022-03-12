@@ -82,7 +82,8 @@ margin-left:2%;
 const HeaderDescriptionContainer = styled.div`
 ${sharedStyle};
 `
-export const Dashboard = () =>  {
+export const Dashboard = (props) =>  {
+  const {searchTicket} = props;
   const [ticketDetails,setTicketDetails] = React.useState([]);
   const [dataFetch,setDataFetch] = React.useState(false);
   useEffect(() => {
@@ -131,7 +132,11 @@ export const Dashboard = () =>  {
       </FilterButton>
     </FilterButtonDiv>
 
-    { ticketDetails.length>0 ? ticketDetails.map((ticketDetail,index) => {
+    { ticketDetails.length > 0 ? searchTicket ? ticketDetails.filter(item1 => searchTicket.some(item2 => item1.id === item2.id)).map((ticketDetail,index) => {
+      return(
+        <Ticket ticketDetail={ticketDetail} />
+      )
+    }) : ticketDetails.map((ticketDetail,index) => {
         return(
           <Ticket ticketDetail={ticketDetail} />
         )

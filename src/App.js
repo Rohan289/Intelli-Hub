@@ -14,9 +14,15 @@ height:100vh;
 `
 
 function App() {
+
   const [defaultLanguage,setDefaultLanguage] = React.useState(LOCALES.ENGLISH);
+  const [ticketSearched,setTicketSearched] = React.useState('');
   const updateLocale = (value) => {
     setDefaultLanguage(value);
+  }
+
+  const searchedTicket = (val) => {
+    setTicketSearched(val);
   }
 
   return (
@@ -24,10 +30,10 @@ function App() {
         <I18nPropvider locale={defaultLanguage}>
       <Router>
         <Layout>
-        <NavigationBar updateLocale={updateLocale}/>
+        <NavigationBar searchedTicket={searchedTicket} updateLocale={updateLocale}/>
         <Sidebar />
         <Switch>
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/" render={(props) => <Dashboard {...props} searchTicket={ticketSearched} />} />
         </Switch>
         </Layout>
       </Router>

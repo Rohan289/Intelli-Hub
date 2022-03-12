@@ -5,6 +5,10 @@ export const getTicketDDetails = () => {
 
 }
 
+export const getSearchedByTicketDetails = (query) => {
+    return axios.get(`${process.env.REACT_APP_INTELLI_HUB_API}/list_ticket_details?search=${query}`);
+}
+
 export const getFilteredTicketDetails = (obj) => {
 let queryString = obj? Object.keys(obj).map(key => key + '=' + obj[key]).join('&') : '';
 return axios.get(`${process.env.REACT_APP_INTELLI_HUB_API}/list_filtered_ticket_details?${queryString}`);

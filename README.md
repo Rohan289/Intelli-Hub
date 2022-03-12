@@ -1,6 +1,5 @@
-Project Name & Pitch
 
-Intelli Service Hub
+# Intelli Service Hub
 
 An application used to  to provide Service Desk as a Service (Software as a Service Platform). 
 
