@@ -90,6 +90,12 @@ margin-left:0.5em;
 size:0.5em;
 `
 
+const TicketStatusText = styled.p`
+color: ${props => props.Closed ? "red" : "green"};
+display : inline-block;
+margin-left:1em;
+`
+
 export const Ticket = (props) => {
     const {ticketDetail} = props;
     
@@ -121,7 +127,7 @@ export const Ticket = (props) => {
                   </ProfileTicketName>
                 </div><div>
                     <ProfileTicketDescriptionDiv><ProfileTicketIssuer>{ticketDetail?ticketDetail.assignee : ''}</ProfileTicketIssuer>
-                    <ProfileTicketDescription>reported in Issue</ProfileTicketDescription>
+                    <ProfileTicketDescription>reported in Issue<TicketStatusText {...ticketDetail?ticketDetail.status : ''}>{ticketDetail?`(${ticketDetail.status})`:''}</TicketStatusText></ProfileTicketDescription>
                     </ProfileTicketDescriptionDiv></div>
                 </ProfileHeaderName>
                 </ProfileHeader>

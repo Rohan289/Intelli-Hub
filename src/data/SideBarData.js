@@ -1,3 +1,5 @@
+import { LOCALES } from "../i18nProvider";
+import translate  from "../i18nProvider/translate";
 export const SideBarData = [
     {
       path: '/', /* path is used as id to check which NavItem is active basically */
@@ -39,22 +41,33 @@ export const SideBarData = [
 
 export const TicketButtonData = [{
   className : "fa-solid fa-reply",
-  value : "Reply"
+  value : translate("Reply")
 },
 {
   className : "fa-solid fa-sticky-note",
-  value : "Add Note"
+  value : translate("Add Note")
 },{
   className : "fa-solid fa-mail-forward",
-  value : "Forward"
+  value : translate("Forward")
 },{
   className : "fa-solid fa-times-circle",
-  value : "Close"
+  value : translate("Close")
 },{
   className : "fa-solid fa-code-merge",
-  value : "Merge"
+  value : translate("Merge")
 },{
   className : "fa-solid fa-trash",
-  value : "Delete"
+  value : translate("Delete")
 }
 ]
+
+export const LOCALEDATA = [{
+  key : "English",
+  value : LOCALES.ENGLISH
+},{
+  key : "French",
+  value : LOCALES.FRENCH
+},{
+  key : "German",
+  value : LOCALES.GERMAN
+}];

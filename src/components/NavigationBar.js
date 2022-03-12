@@ -2,11 +2,31 @@ import React from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { css } from 'styled-components';
+import { LOCALEDATA } from '../data/SideBarData';
+import { LOCALES } from '../i18nProvider';
+
+const common = css`
+display:flex;
+flex-direction:row;
+align-items: center;
+justify-content: center;
+`
 
 const Styles = styled.div`
   .navbar { background-color: white; }
   a, .navbar-nav, .navbar-light .nav-link {
     color: #9FFFCB;
+  }
+  select {
+    border : none;
+    color: #ffffff;
+    font-weight:bold;
+    &.active {
+        background-color:transparent;
+        border : none;
+    }
+    
   }
   .navbar-brand {
     font-size: 2.5em;
@@ -23,6 +43,57 @@ const Styles = styled.div`
   .ml-auto {
     margin-left:60%;
   }
+  .icon-button {
+    position: relative;
+   ${common};
+    color: #333333;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    margin:0.2em 0em 0em 1em;
+  }
+  
+  .icon-button:hover {
+    cursor: pointer;
+  }
+  
+  .icon-button:active {
+    background: #cccccc;
+  }
+  
+  .icon-button__badge {
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    width: 25px;
+    height: 25px;
+    background: red;
+    color: #ffffff;
+    ${common};
+    border-radius: 50%;
+  }
+  .profile-section {
+    ${common};
+  }
+  img {
+    width: 40px;
+    height : 40px;
+    margin-left : 4em;
+  }
+  label {
+    color : #2B3E4D;
+    font-weight:bold;
+    display:block;
+    margin-top : 5%;
+    margin-bottom : 5%;  
+  }
+  .profile-button {
+    ${common};
+    background-color:#5CDD2E;
+    border-radius:1.5em;
+    border:1px solid #A9E7A0;
+  }
 `;
 
 const StyledIcon = styled(Link)`
@@ -35,16 +106,9 @@ padding:0;
 `
 const StyledRightHeader = styled.div`
 display:flex;
-margin-left:60%;
+margin-left:50%;
 `
-export const ProfileButton = styled.button`
-display:flex;
-align-items:center;
-background-color:#5CDD2E;
-border-radius:1.5em;
-border:1px solid #A9E7A0;
 
-`
 export const ProfileButtonText = styled.p`
 color:white;
 font-weight:bold;
@@ -56,8 +120,19 @@ margin:1em;
 const ProfileButtonIcon = styled(Link)`
 color:white;
 `
-
-export const NavigationBar = () => (
+const NotificationIcon = styled(Link)`
+display: flex;
+margin: 0.2em 0em 0em 1em;
+font-size: 2em;
+`
+export const NavigationBar = (props) => {
+  const {updateLocale} = props;
+  const [defaultLanguage,setDefaultLanguage] = React.useState(LOCALES.ENGLISH);
+  const updateDefaultLanguage= (e) => {
+   setDefaultLanguage(e.target.value);
+   updateLocale(e.target.value);
+}
+return(
   <Styles>
     <StyledNavBar expand="lg">
       <StyledNavBar.Brand href="/">
@@ -69,12 +144,30 @@ export const NavigationBar = () => (
       </Form>
       <Navbar.Collapse id="basic-navbar-nav">
         <StyledRightHeader>
-        <ProfileButton>
-          <ProfileButtonText>New Ticket</ProfileButtonText>
+        <select value={defaultLanguage} onChange={updateDefaultLanguage} className={"profile-button"}>
           <ProfileButtonIcon className='fa fw fa-caret-down' />
-        </ProfileButton>
+          {
+                  LOCALEDATA.map((lang,index) => {
+                      return(
+                      <option value={lang.value}>{lang.key}</option>
+                      )
+                  })
+              }
+        </select>
+        <button type="button" class="icon-button">
+        <NotificationIcon className='fa fw fa-envelope' />
+        <span class="icon-button__badge">2</span>
+        </button>
+        <button type="button" className={"icon-button"}>
+        <NotificationIcon className='fa fw fa-bell' />
+        <span class="icon-button__badge">2</span>
+        </button>
+        <div className='profile-section'>
+        <img src={require('../assets/profile.jpg')} />
+        <label>Rohan Bhowmick</label>
+        </div>
         </StyledRightHeader>
       </Navbar.Collapse>
     </StyledNavBar>
   </Styles>
-)
+)}
