@@ -84,8 +84,11 @@ export const ContactDetails = () => {
     const updateTimeLogs = (e) => {
         setTimeLogs(e.target.value);
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
     return(
-        <StyledForm>
+        <StyledForm onSubmit={handleSubmit}>
         <label>Contact Details <EditText>Edit</EditText></label>
         <div className="profile-container"><ProfileImage src={require('../assets/profile.jpg')} />
         <label>{user?user.name : ''}</label>
