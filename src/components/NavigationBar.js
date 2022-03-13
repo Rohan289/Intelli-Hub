@@ -27,6 +27,10 @@ const Styles = styled.div`
         background-color:transparent;
         border : none;
     }
+    option:checked{
+      border: none;
+      outline: none;
+  }
     
   }
   .navbar-brand {
@@ -140,7 +144,7 @@ return(
   <Styles>
     <StyledNavBar expand="lg">
       <StyledNavBar.Brand href="/">
-      <StyledIcon className={"fa fw fa-envelope-open-text"}/>
+      <StyledIcon to={'/'} className={"fa fw fa-envelope-open-text"}/>
         </StyledNavBar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Form className="form-center">
@@ -149,22 +153,22 @@ return(
       <Navbar.Collapse id="basic-navbar-nav">
         <StyledRightHeader>
         <select value={defaultLanguage} onChange={updateDefaultLanguage} className={"profile-button"}>
-          <ProfileButtonIcon className='fa fw fa-caret-down' />
+          <ProfileButtonIcon to={'/'} className='fa fw fa-caret-down' />
           {
                   LOCALE_DATA.map((lang,index) => {
                       return(
-                      <option value={lang.value}>{lang.key}</option>
+                      <option key={index} value={lang.value}>{lang.key}</option>
                       )
                   })
               }
         </select>
-        <button type="button" class="icon-button">
-        <NotificationIcon className='fa fw fa-envelope' />
-        <span class="icon-button__badge">2</span>
+        <button type="button" className={"icon-button"}>
+        <NotificationIcon to={'/'} className='fa fw fa-envelope' />
+        <span className={"icon-button__badge"}>2</span>
         </button>
         <button type="button" className={"icon-button"}>
-        <NotificationIcon className='fa fw fa-bell' />
-        <span class="icon-button__badge">2</span>
+        <NotificationIcon to={'/'} className='fa fw fa-bell' />
+        <span className={"icon-button__badge"}>2</span>
         </button>
         <div className='profile-section'>
         <img src={require('../assets/profile.jpg')} />

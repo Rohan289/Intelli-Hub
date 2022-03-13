@@ -19,6 +19,8 @@ export default {
     'Merge' : 'Verschmelzen',
     'Delete' : 'Löschen',
     'Contact Details' : 'Kontaktdetails',
-    'Time Logs' : 'Zeitprotokolle'
+    'Time Logs' : 'Zeitprotokolle',
+    'Work Phone' : 'Arbeitshandy',
+    'Email ID' : 'E-Mail-ID'
   },
 };

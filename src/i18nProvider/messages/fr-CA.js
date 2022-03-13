@@ -18,6 +18,8 @@ export default {
     'Merge' : 'Fusionner',
     'Delete' : 'Supprimer',
     'Contact Details' : 'Détails du contact',
-    'Time Logs' : 'Journaux de temps'
+    'Time Logs' : 'Journaux de temps',
+    'Work Phone' : 'Téléphone de travail',
+    'Email ID' : 'Identifiant de messagerie'
   },
 };

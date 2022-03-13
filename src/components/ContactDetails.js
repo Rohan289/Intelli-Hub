@@ -90,16 +90,16 @@ export const ContactDetails = () => {
         <label>{user?user.name : ''}</label>
         </div>
         <label>{translate("Email ID")}</label>
-        <input type="email" name="name" value={user?user.emil : ''}/>
+        <input disabled type="email" name="name" value={user?user.emil : ''}/>
         <label>{translate("Work Phone")}</label>
-        <input type="text" name="name" value={user?user.mobile : ''}/>
+        <input disabled type="text" name="name" value={user?user.mobile : ''}/>
         <label>{translate("Time Logs")}:</label>
           <select disabled value={user?user.logHours:''}>
           <option value="" disabled selected hidden>Choose time log</option>
               {
                   TIME_LOGS.map((timeLog,index) => {
                       return(
-                      <option value={timeLog}>{timeLog}</option>
+                      <option key={index} value={timeLog}>{timeLog}</option>
                       )
                   })
               }

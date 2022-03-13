@@ -12,19 +12,19 @@ Clone down this repository. You will need node and npm installed globally on you
 
 # Installation:
 
-npm install
+# npm install
 
 To Run Test Suite:
 
-npm test
+# npm test
 
-To Start Server:
+To Start Local Server:
 
-npm start
+# npm start
 
 To Visit App (local):
 
-localhost:3000/ideas
+localhost:3000
 
 # Deployment
 

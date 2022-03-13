@@ -119,7 +119,7 @@ export const Ticket = (props) => {
                         TicketTypeBadges.map((badge,index) => {
                             if(ticketDetail && badge.name === ticketDetail.type) {
                                 return(
-                                    <span class={badge.css}>{badge.value}</span>
+                                    <span key={index} className={badge.css}>{badge.value}</span>
                                 )
                             }
                         })

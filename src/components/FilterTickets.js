@@ -1,9 +1,10 @@
 import React from "react";
-import { TICKET_ASSIGNEES, TICKET_PRIORITIES, TICKET_STATUS, TICKET_STATUSES, TICKET_TYPES } from "../data/TicketFormDetails";
+import { TICKET_ASSIGNEES, TICKET_PRIORITIES, TICKET_STATUSES, TICKET_TYPES } from "../data/TicketFormDetails";
 import styled from 'styled-components';
-import { ProfileButton, ProfileButtonText } from "./NavigationBar";
+import { ProfileButtonText } from "./NavigationBar";
 import { getFilteredTicketDetails, isApiSuccess } from "../service";
 import translate from '../i18nProvider/translate';
+
 const StyledForm = styled.form`
 width : 100%;
 height : 100%;
@@ -41,14 +42,13 @@ select {
       width : 60%;
       margin-top : 5%;
   }
+  .filter-button {
+    text-align;
+    background-color:#5CDD2E;
+    border-radius:1.5em;
+    border:1px solid #A9E7A0;
+  }
 `
-export const FilterButton = styled.button`
-text-align;
-background-color:#5CDD2E;
-border-radius:1.5em;
-border:1px solid #A9E7A0;
-`
-
 
 export const FilterTickets = (props) => {
     const {updateFilter} = props;
@@ -103,7 +103,7 @@ export const FilterTickets = (props) => {
               {
                   TICKET_TYPES.map((ticketType,index) => {
                       return(
-                      <option value={ticketType}>{ticketType}</option>
+                      <option key={index} value={ticketType}>{ticketType}</option>
                       )
                   })
               }
@@ -114,7 +114,7 @@ export const FilterTickets = (props) => {
               {
                   TICKET_STATUSES.map((ticketStatus,index) => {
                       return(
-                      <option value={ticketStatus}>{ticketStatus}</option>
+                      <option key={index} value={ticketStatus}>{ticketStatus}</option>
                       )
                   })
               }
@@ -125,7 +125,7 @@ export const FilterTickets = (props) => {
               {
                   TICKET_PRIORITIES.map((ticketPriority,index) => {
                       return(
-                      <option value={ticketPriority}>{ticketPriority}</option>
+                      <option key={index} value={ticketPriority}>{ticketPriority}</option>
                       )
                   })
               }
@@ -136,14 +136,14 @@ export const FilterTickets = (props) => {
               {
                   TICKET_ASSIGNEES.map((ticketAssignee,index) => {
                       return(
-                      <option value={ticketAssignee}>{ticketAssignee}</option>
+                      <option key={index} value={ticketAssignee}>{ticketAssignee}</option>
                       )
                   })
               }
           </select>
-        <FilterButton type="submit" >
+        <button className={"filter-button"} type="submit" >
           <ProfileButtonText>{translate("Update")}</ProfileButtonText>
-        </FilterButton>
+        </button>
       </StyledForm>
     )
 }
