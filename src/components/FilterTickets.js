@@ -43,7 +43,8 @@ select {
       margin-top : 5%;
   }
   .filter-button {
-    text-align;
+    display:flex;
+    justify-content:center;
     background-color:#5CDD2E;
     border-radius:1.5em;
     border:1px solid #A9E7A0;
