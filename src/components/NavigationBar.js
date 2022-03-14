@@ -148,7 +148,7 @@ return(
         </StyledNavBar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Form className="form-center">
-        <FormControl onChange={searchTicket} type="text" placeholder="Search" className="" />
+        <FormControl label="Search" onChange={searchTicket} type="text" placeholder="Search" className="" />
       </Form>
       <Navbar.Collapse id="basic-navbar-nav">
         <StyledRightHeader>
@@ -171,7 +171,7 @@ return(
         <span className={"icon-button__badge"}>2</span>
         </button>
         <div className='profile-section'>
-        <img src={require('../assets/profile.jpg')} />
+        <img alt='profile' src={require('../assets/profile.jpg')} />
         <label>Rohan Bhowmick</label>
         </div>
         </StyledRightHeader>

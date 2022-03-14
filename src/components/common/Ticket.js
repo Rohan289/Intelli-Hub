@@ -111,7 +111,7 @@ export const Ticket = (props) => {
         return (
             <StyledHeader>
                 <ProfileHeader>
-                <div><ProfileImage src={require('../../assets/profile.jpg')} /></div>
+                <div><ProfileImage alt={`ticket_${props.index}`} src={require('../../assets/profile.jpg')} /></div>
                 <ProfileHeaderName>
                     <div>
                 <ProfileTicketName>{ticketDetail?ticketDetail.name : ''}
