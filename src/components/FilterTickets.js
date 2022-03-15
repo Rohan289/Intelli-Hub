@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ProfileButtonText } from "./NavigationBar";
 import { getFilteredTicketDetails, isApiSuccess } from "../service";
 import translate from '../i18nProvider/translate';
+import { AppConstants } from "../constants/AppConstants";
 
 const StyledForm = styled.form`
 width : 100%;
@@ -100,7 +101,7 @@ export const FilterTickets = (props) => {
         <label>{translate("Properties")}</label>
         <label>{translate("Type")}:</label>
           <select value={ticket} onChange={updateTicketType}>
-          <option value="" disabled selected hidden>Choose type</option>
+          <option value="" disabled selected hidden>{AppConstants.CHOOSE_TYPE}</option>
               {
                   TICKET_TYPES.map((ticketType,index) => {
                       return(
@@ -111,7 +112,7 @@ export const FilterTickets = (props) => {
           </select>
           <label>{translate("Status")}:</label>
           <select value={ticketStatus} onChange={updateTicketStatus}>
-          <option value="" disabled selected hidden>Choose status</option>
+          <option value="" disabled selected hidden>{AppConstants.CHOOSE_STATUS}</option>
               {
                   TICKET_STATUSES.map((ticketStatus,index) => {
                       return(
@@ -122,7 +123,7 @@ export const FilterTickets = (props) => {
           </select>
           <label>{translate("Priority")}:</label>
           <select value={ticketPriority} onChange={updateTicketPriority}>
-          <option value="" disabled selected hidden>Choose priority</option>
+          <option value="" disabled selected hidden>{AppConstants.CHOOSE_PRIORITY}</option>
               {
                   TICKET_PRIORITIES.map((ticketPriority,index) => {
                       return(
@@ -133,7 +134,7 @@ export const FilterTickets = (props) => {
           </select>
           <label>{translate("Assign To")}:</label>
           <select value={ticketAssignee} onChange={updateTicketAssignee}>
-          <option value="" disabled selected hidden>Choose assignee</option>
+          <option value="" disabled selected hidden>{AppConstants.CHOOSE_ASSIGNEE}</option>
               {
                   TICKET_ASSIGNEES.map((ticketAssignee,index) => {
                       return(
